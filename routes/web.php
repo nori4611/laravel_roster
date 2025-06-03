@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RosterController;
 use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\ProcessMonitoringController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/monitorings/create', [MonitoringController::class, 'create'])->name('monitorings.create');
     Route::post('/monitorings', [MonitoringController::class, 'store'])->name('monitorings.store');
     Route::get('/monitorings/create/{date}', [MonitoringController::class, 'createWithDate'])->name('monitorings.create.withDate');
+
+
+    // Process Monitoring
+    Route::get('/process-monitoring', [ProcessMonitoringController::class, 'index'])->name('process.monitoring');
+
+    // Testing route for UiPath token
+    Route::get('/test-token', function (\App\Services\UiPathService $uipath) {
+    return $uipath->getAccessToken();
+
+   
+});
 
 });
 

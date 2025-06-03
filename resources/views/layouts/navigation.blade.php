@@ -19,6 +19,10 @@
                 <x-nav-link :href="route('monitorings.create')" :active="request()->routeIs('monitorings.create')">
                      {{ __('Monitoring') }}
                         </x-nav-link>
+
+                <x-nav-link :href="route('process.monitoring')" :active="request()->routeIs('process.monitoring')">
+                    {{ __('Process Monitoring') }}
+                        </x-nav-link>        
             </div>
 
 
