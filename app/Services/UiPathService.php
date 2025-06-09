@@ -71,6 +71,7 @@ public function getJobs()
     $accessToken = $this->getAccessToken();
 
     $response = Http::withToken($accessToken)
+        ->withOptions(['verify' => false]) // Bypass SSL verify (not for production!)
         ->acceptJson()
         ->get("https://cloud.uipath.com/tm/Robin_Prod/orchestrator_/odata/Jobs\$filter=((CreationTime ge 2024-04-04T12:00:47.264Z) and (ProcessType eq 'Process'))&\$expand=Robot,Machine,Release&\$orderby=CreationTime desc");
 

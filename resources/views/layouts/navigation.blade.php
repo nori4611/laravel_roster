@@ -12,8 +12,13 @@
 
             <!-- Navigation Links -->
             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+
+                <x-nav-link :href="route('dashboard.monitoring')" :active="request()->routeIs('dashboard.monitoring')">
                     {{ __('Dashboard') }}
+                        </x-nav-link>
+
+                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Monthly Roster Monitoring') }}
                         </x-nav-link>
 
                 <x-nav-link :href="route('monitorings.create')" :active="request()->routeIs('monitorings.create')">

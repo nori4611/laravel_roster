@@ -27,6 +27,8 @@ class ProcessMonitoringController extends Controller
                 'Accept'        => 'application/json',
             ],
             'query' => $queryParams,
+            'verify' => false  // BYPASS SSL - jangan guna di production!
+
         ]);
 
         $jobs = json_decode($response->getBody(), true)['value'];

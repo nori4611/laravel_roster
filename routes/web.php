@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardMonitoringController;
 use App\Http\Controllers\RosterController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\ProcessMonitoringController;
@@ -39,11 +40,19 @@ Route::middleware(['auth'])->group(function () {
     // Process Monitoring
     Route::get('/process-monitoring', [ProcessMonitoringController::class, 'index'])->name('process.monitoring');
 
+    // New Dashboard route
+    Route::get('/dashboard-monitoring', [DashboardMonitoringController::class, 'index'])->name('dashboard.monitoring');
+
+    // Route get job stats
+    Route::get('/monitoring/job-stats', [\App\Http\Controllers\DashboardMonitoringController::class, 'getJobStats']);
+
+
+
     // Testing route for UiPath token
     Route::get('/test-token', function (\App\Services\UiPathService $uipath) {
     return $uipath->getAccessToken();
 
-   
+       
 });
 
 });
